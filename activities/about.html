@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Joseph's Saging Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; background: #fffdf5; color: #2c2c2c; }
+
+        .page-header {
+            background: linear-gradient(135deg, #f5c842, #f9e07a);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2em; color: #4a3000; margin-bottom: 8px; }
+        .page-header p { color: #6b4c00; font-size: 0.95em; }
+
+        .about-section {
+            max-width: 680px;
+            margin: 40px auto;
+            padding: 0 28px;
+        }
+        .about-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: #4a3000;
+            margin-bottom: 12px;
+            border-left: 4px solid #f5c842;
+            padding-left: 12px;
+        }
+        .about-section p {
+            font-size: 0.95em;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 28px;
+        }
+
+        /* Owner card with real photo */
+        .team-card {
+            background: #fff;
+            border: 2px solid #f5e090;
+            border-radius: 14px;
+            padding: 28px 24px;
+            text-align: center;
+            max-width: 320px;
+            margin: 0 auto 40px;
+            box-shadow: 0 4px 18px rgba(74,48,0,0.08);
+        }
+        .team-card .owner-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 4px solid #f5c842;
+            margin: 0 auto 14px;
+            display: block;
+            box-shadow: 0 4px 16px rgba(245,200,66,0.4);
+        }
+        .team-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3em; color: #4a3000; margin-bottom: 4px; }
+        .team-card .role {
+            font-size: 0.76em;
+            color: #7a5500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-bottom: 10px;
+        }
+        .team-card p { font-size: 0.85em; color: #777; line-height: 1.7; }
+        .school-badge {
+            display: inline-block;
+            background: #f5e090;
+            color: #4a3000;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-top: 12px;
+            border: 1px solid #e0c040;
+        }
+
+        /* Contact strip */
+        .contact-strip {
+            background: #4a3000;
+            color: #f5e090;
+            padding: 32px 30px;
+            text-align: center;
+        }
+        .contact-strip h2 { font-family: 'Playfair Display', serif; font-size: 1.3em; margin-bottom: 18px; }
+        .contact-items { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+        .contact-item {
+            background: rgba(245,200,66,0.12);
+            border: 1px solid rgba(245,200,66,0.25);
+            border-radius: 10px;
+            padding: 14px 22px;
+            font-size: 0.9em;
+            min-width: 190px;
+        }
+        .ci-label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.65; margin-bottom: 4px; }
+        .ci-val { font-weight: 600; color: #f5c842; word-break: break-all; }
+
+        /* Map section */
+        .map-section {
+            padding: 44px 28px;
+            background: #fffbe8;
+            text-align: center;
+        }
+        .map-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #4a3000;
+            margin-bottom: 6px;
+        }
+        .map-section .map-subtitle {
+            font-size: 0.88em;
+            color: #7a5500;
+            margin-bottom: 20px;
+        }
+        .map-section iframe {
+            width: 100%;
+            max-width: 720px;
+            height: 400px;
+            border: 3px solid #f5c842;
+            border-radius: 14px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(74,48,0,0.12);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-header">
+        <h1>About Us</h1>
+        <p>The story behind Joseph's Saging Shop</p>
+    </div>
+
+    <div class="about-section">
+        <h2>Our Story</h2>
+        <p>Joseph's Saging Shop started as a small roadside stall with one simple goal: bring the freshest bananas from local farms directly to our community. Founded near CIT-U in Labangon, Cebu City, what began as a passion project has grown into a trusted neighborhood source for quality produce.</p>
+
+        <h2>Our Mission</h2>
+        <p>We believe everyone deserves access to fresh, affordable, and nutritious food. By partnering with local Filipino farmers, we support sustainable agriculture while giving our customers the best bananas at fair prices.</p>
+
+        <h2>Our Values</h2>
+        <p>Freshness, honesty, and community are at the heart of everything we do. We hand-pick every bunch, maintain close relationships with our farming partners, and treat every customer like family.</p>
+    </div>
+
+    <!-- Owner card using Joseph's actual graduation photo -->
+    <div class="team-card">
+        <img
+            src="images/joseph.jpg"
+            alt="Joseph — Founder of Joseph's Saging Shop"
+            class="owner-photo"
+        >
+        <h3>Joseph</h3>
+        <div class="role">Founder &amp; Owner</div>
+        <p>Passionate about fresh produce and supporting local farmers across the Philippines.</p>
+        <span class="school-badge">🎓 De La Salle · CIT-U Cebu</span>
+    </div>
+
+    <!-- Contact info with real details -->
+    <div class="contact-strip">
+        <h2>Get in Touch</h2>
+        <div class="contact-items">
+            <div class="contact-item">
+                <div class="ci-label">📧 Email</div>
+                <div class="ci-val">josephmendrez92@gmail.com</div>
+            </div>
+            <div class="contact-item">
+                <div class="ci-label">📞 Phone / Viber</div>
+                <div class="ci-val">09551269828</div>
+            </div>
+            <div class="contact-item">
+                <div class="ci-label">📍 Location</div>
+                <div class="ci-val">Labangon, Cebu City</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Maps embed — CIT-U Cebu, Labangon, Cebu City -->
+    <div class="map-section">
+        <h2>📍 Find Us Here</h2>
+        <p class="map-subtitle">Cebu Institute of Technology – University (CIT-U), Labangon, Cebu City</p>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.1901530097286!2d123.88276817592773!3d10.297025689736328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999b3831b3155%3A0x5a6b78ae6e3ba7aa!2sCebu%20Institute%20of%20Technology%20-%20University!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="CIT-U Cebu Location Map">
+        </iframe>
+    </div>
+
+</body>
+</html>

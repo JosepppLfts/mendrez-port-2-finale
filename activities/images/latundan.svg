@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#f0fff0"/>
+  <circle cx="360" cy="30" r="60" fill="#c8e850" opacity="0.25"/>
+  <g transform="translate(200,115) rotate(-10)">
+    <ellipse cx="-28" cy="-32" rx="15" ry="52" fill="#d8e860" transform="rotate(-18,-28,-32)"/>
+    <ellipse cx="3"   cy="-42" rx="15" ry="57" fill="#f0f5a0" transform="rotate(-3,3,-42)"/>
+    <ellipse cx="33"  cy="-34" rx="15" ry="52" fill="#d8e860" transform="rotate(14,33,-34)"/>
+    <ellipse cx="-16" cy="6"   rx="14" ry="50" fill="#f0f5a0" transform="rotate(-22,-16,6)"/>
+    <ellipse cx="16"  cy="-2"  rx="14" ry="54" fill="#d8e860" transform="rotate(-6,16,-2)"/>
+    <rect x="-6" y="-88" width="12" height="18" rx="4" fill="#6b8c24"/>
+  </g>
+  <rect x="112" y="188" width="176" height="26" rx="13" fill="#3a5a14" opacity="0.8"/>
+  <text x="200" y="206" font-family="Georgia,serif" font-size="13" fill="#f0f5a0" text-anchor="middle" font-weight="bold">Latundan Banana</text>
+</svg>

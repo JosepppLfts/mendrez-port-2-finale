@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --red: #ff0022;
+    --red-dark: #cc0018;
+    --red-glow: rgba(255, 0, 34, 0.6);
+    --dark: #0a0000;
+    --panel: rgba(15, 0, 0, 0.95);
+    --border: rgba(255, 0, 34, 0.4);
+    --text: #ff6677;
+    --text-bright: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+    background-color: var(--dark);
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255,0,0,0.03) 0px, rgba(255,0,0,0.03) 1px, transparent 1px, transparent 4px),
+        radial-gradient(ellipse at 50% 50%, #1a0000 0%, #050000 70%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.box {
+    background: var(--panel);
+    padding: 26px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    box-shadow: 0 0 20px rgba(255,0,34,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.box::before, .box::after {
+    content: '';
+    position: absolute;
+    width: 12px; height: 12px;
+    border-color: var(--red);
+    border-style: solid;
+    opacity: 0.5;
+}
+.box::before { bottom: -1px; left: -1px; border-width: 0 0 1px 1px; }
+.box::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(255,0,34,0.3);
+}
+
+h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--red);
+    text-shadow: 0 0 8px var(--red-glow);
+    margin-bottom: 18px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+label {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text);
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+label::before { content: '> '; color: var(--red); }
+
+input {
+    width: 100%;
+    padding: 9px 12px;
+    margin-bottom: 12px;
+    background: rgba(255,0,34,0.04);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    outline: none;
+    color: var(--text-bright);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.88rem;
+    caret-color: var(--red);
+    transition: all 0.3s;
+}
+input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 8px rgba(255,0,34,0.25);
+    background: rgba(255,0,34,0.07);
+}
+
+button {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid var(--red);
+    border-radius: 3px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:first-of-type {
+    background-color: var(--red-dark);
+    color: white;
+    margin-right: 2%;
+    box-shadow: 0 0 10px var(--red-glow);
+}
+button:first-of-type:hover {
+    background-color: var(--red);
+    box-shadow: 0 0 20px var(--red-glow);
+}
+
+button.clear {
+    background-color: transparent;
+    color: var(--text);
+    border-color: rgba(255,0,34,0.3);
+}
+button.clear:hover {
+    background-color: rgba(255,0,34,0.08);
+    color: var(--text-bright);
+    border-color: var(--red);
+}
+
+.result {
+    margin-top: 14px;
+    padding: 12px;
+    background: rgba(255,0,34,0.04);
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
+    font-size: 0.82rem;
+    color: var(--text);
+    max-height: 150px;
+    overflow-y: auto;
+    line-height: 1.8;
+}
+
+.result::-webkit-scrollbar { width: 4px; }
+.result::-webkit-scrollbar-track { background: transparent; }
+.result::-webkit-scrollbar-thumb { background: var(--red-dark); border-radius: 2px; }

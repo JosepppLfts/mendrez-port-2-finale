@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fffde7"/>
+  <circle cx="360" cy="30" r="60" fill="#fdd835" opacity="0.3"/>
+  <g transform="translate(200,115) rotate(-8)">
+    <ellipse cx="-30" cy="-36" rx="16" ry="60" fill="#fdd835" transform="rotate(-20,-30,-36)"/>
+    <ellipse cx="2"   cy="-47" rx="16" ry="65" fill="#ffee58" transform="rotate(-4,2,-47)"/>
+    <ellipse cx="36"  cy="-38" rx="16" ry="60" fill="#fdd835" transform="rotate(16,36,-38)"/>
+    <ellipse cx="-19" cy="5"   rx="15" ry="58" fill="#ffee58" transform="rotate(-24,-19,5)"/>
+    <ellipse cx="15"  cy="-3"  rx="15" ry="63" fill="#fdd835" transform="rotate(-7,15,-3)"/>
+    <rect x="-7" y="-100" width="14" height="21" rx="4" fill="#795548"/>
+  </g>
+  <rect x="108" y="188" width="184" height="26" rx="13" fill="#4a3000" opacity="0.82"/>
+  <text x="200" y="206" font-family="Georgia,serif" font-size="13" fill="#ffee58" text-anchor="middle" font-weight="bold">Cavendish Banana</text>
+</svg>

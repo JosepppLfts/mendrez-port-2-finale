@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --red: #ff0022;
+    --red-dim: #cc0018;
+    --red-glow: rgba(255, 0, 34, 0.6);
+    --red-faint: rgba(255, 0, 34, 0.08);
+    --dark: #0a0000;
+    --darker: #050000;
+    --panel: rgba(15, 0, 0, 0.92);
+    --border: rgba(255, 0, 34, 0.4);
+    --text: #ff6677;
+    --text-bright: #ffffff;
+    --scanline: rgba(255, 0, 0, 0.03);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+    background-color: var(--darker);
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            var(--scanline) 0px,
+            var(--scanline) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        radial-gradient(ellipse at 50% 50%, #1a0000 0%, #050000 70%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated corner decorations */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--red);
+    opacity: 0.15;
+    animation: rotate 10s linear infinite;
+}
+
+body::before {
+    top: -50px; left: -50px;
+    transform-origin: center;
+}
+
+body::after {
+    bottom: -50px; right: -50px;
+    transform-origin: center;
+    animation-direction: reverse;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.form-container {
+    background: var(--panel);
+    padding: 35px 30px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    box-shadow:
+        0 0 0 1px rgba(255,0,34,0.1),
+        0 0 30px var(--red-glow),
+        inset 0 0 60px rgba(255, 0, 0, 0.03);
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    animation: flicker 8s infinite;
+}
+
+/* Corner brackets */
+.form-container::before,
+.form-container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--red);
+    border-style: solid;
+}
+.form-container::before {
+    top: -1px; left: -1px;
+    border-width: 2px 0 0 2px;
+}
+.form-container::after {
+    bottom: -1px; right: -1px;
+    border-width: 0 2px 2px 0;
+}
+
+@keyframes flicker {
+    0%, 95%, 100% { opacity: 1; }
+    96% { opacity: 0.97; }
+    97% { opacity: 1; }
+    98% { opacity: 0.95; }
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px var(--red-glow), 0 0 30px var(--red-glow);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+h2::after {
+    content: '[ USER_INFO_FORM ]';
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    color: var(--red-dim);
+    background: var(--panel);
+    padding: 0 8px;
+}
+
+label {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: normal;
+    font-size: 0.75rem;
+    color: var(--text);
+    display: inline-block;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+label::before {
+    content: '> ';
+    color: var(--red);
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    background: rgba(255, 0, 0, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    outline: none;
+    color: var(--text-bright);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    caret-color: var(--red);
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: rgba(255, 102, 119, 0.3);
+}
+
+input:focus, select:focus {
+    border-color: var(--red);
+    background: rgba(255, 0, 34, 0.08);
+    box-shadow: 0 0 12px rgba(255, 0, 34, 0.3), inset 0 0 8px rgba(255,0,0,0.05);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff0022' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+select option {
+    background: #0a0000;
+    color: var(--text-bright);
+}
+
+.radio-group, .checkbox-group {
+    margin-bottom: 18px;
+    padding: 12px;
+    border: 1px solid rgba(255,0,34,0.15);
+    border-radius: 2px;
+    background: rgba(255,0,0,0.02);
+}
+
+.radio-group > label:first-child,
+.checkbox-group > label:first-child {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    margin-right: 12px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.radio-group label::before,
+.checkbox-group label::before {
+    content: none;
+}
+
+.radio-group label:hover,
+.checkbox-group label:hover {
+    color: var(--text-bright);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: var(--red);
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    display: inline;
+}
+
+.checkbox-group br {
+    display: block;
+    margin: 4px 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.4s;
+}
+
+button:hover::after {
+    left: 100%;
+}
+
+button[type="submit"] {
+    background-color: var(--red);
+    color: #fff;
+    border: 1px solid var(--red);
+    box-shadow: 0 0 12px var(--red-glow);
+}
+
+button[type="submit"]:hover {
+    background-color: #ff3344;
+    box-shadow: 0 0 24px var(--red-glow), 0 0 50px rgba(255,0,34,0.3);
+    text-shadow: 0 0 8px white;
+}
+
+button[type="reset"] {
+    background-color: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+button[type="reset"]:hover {
+    background-color: var(--red-faint);
+    color: var(--text-bright);
+    border-color: var(--red);
+}
+
+/* Glitch line effect */
+.form-container .glitch-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    animation: scan 3s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { top: 0%; opacity: 0.6; }
+    50% { opacity: 0.2; }
+    100% { top: 100%; opacity: 0.6; }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity 11 - JS Loops</title>
+    <script src="script1.js"></script>
+    <link rel="stylesheet" href="activity11.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h3>For Loop</h3>
+            <label>Enter number:</label> <input type="number" id="forNum"><br>
+            <label>Enter text:</label> <input type="text" id="forText"><br>
+            <button onclick="runFor()">Show</button>
+            <button class="clear" onclick="clearLoop('for')">Clear</button>
+            <div id="forResult" class="result"></div>
+        </div>
+
+        <div class="box">
+            <h3>While Loop</h3>
+            <label>Enter number:</label> <input type="number" id="whileNum"><br>
+            <label>Enter text:</label> <input type="text" id="whileText"><br>
+            <button onclick="runWhile()">Show</button>
+            <button class="clear" onclick="clearLoop('while')">Clear</button>
+            <div id="whileResult" class="result"></div>
+        </div>
+
+        <div class="box">
+            <h3>Do-While Loop</h3>
+            <label>Enter number:</label> <input type="number" id="doNum"><br>
+            <label>Enter text:</label> <input type="text" id="doText"><br>
+            <button onclick="runDoWhile()">Show</button>
+            <button class="clear" onclick="clearLoop('do')">Clear</button>
+            <div id="doResult" class="result"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

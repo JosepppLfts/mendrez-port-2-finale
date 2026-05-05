@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fff8f0"/>
+  <circle cx="360" cy="30" r="60" fill="#ffa726" opacity="0.22"/>
+  <g transform="translate(200,118) rotate(-10)">
+    <ellipse cx="-24" cy="-26" rx="12" ry="42" fill="#ffa726" transform="rotate(-17,-24,-26)"/>
+    <ellipse cx="2"   cy="-34" rx="12" ry="46" fill="#ffcc80" transform="rotate(-2,2,-34)"/>
+    <ellipse cx="28"  cy="-28" rx="12" ry="42" fill="#ffa726" transform="rotate(13,28,-28)"/>
+    <ellipse cx="-14" cy="7"   rx="11" ry="40" fill="#ffcc80" transform="rotate(-20,-14,7)"/>
+    <ellipse cx="13"  cy="1"   rx="11" ry="44" fill="#ffa726" transform="rotate(-5,13,1)"/>
+    <ellipse cx="28"  cy="16"  rx="11" ry="38" fill="#ffb74d" transform="rotate(10,28,16)"/>
+    <rect x="-6" y="-72" width="12" height="15" rx="4" fill="#6D4C41"/>
+  </g>
+  <rect x="108" y="188" width="184" height="26" rx="13" fill="#bf360c" opacity="0.82"/>
+  <text x="200" y="206" font-family="Georgia,serif" font-size="13" fill="#fff8f0" text-anchor="middle" font-weight="bold">Señorita Banana</text>
+</svg>

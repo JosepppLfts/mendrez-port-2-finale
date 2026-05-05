@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Joseph's Saging Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🍌 Joseph's Saging Shop</h1>
+        <p>Fresh, quality bananas delivered with care.</p>
+    </div>
+
+    <!-- Navbar -->
+    <div id="nav">
+        <a class="active" onclick="showPage('home.html', this)">Home</a>
+        <a onclick="showPage('products.html', this)">Products</a>
+        <a onclick="showPage('about.html', this)">About</a>
+    </div>
+
+    <!-- Body -->
+    <div class="body-wrapper">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <span>Pages</span>
+            <a class="active" id="sb-home" onclick="showPage('home.html', this, 'sb-home')">🏠 Home</a>
+            <a id="sb-products" onclick="showPage('products.html', this, 'sb-products')">🍌 Products</a>
+            <a id="sb-about" onclick="showPage('about.html', this, 'sb-about')">ℹ️ About</a>
+        </div>
+
+        <!-- iframe replaces the old show/hide divs -->
+        <iframe
+            id="mainframe"
+            name="mainframe"
+            src="home.html">
+        </iframe>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>📧 josephmendrez92@gmail.com &nbsp;|&nbsp; 📞 09551269828 &nbsp;|&nbsp; &copy; 2026 Joseph's Saging Shop</p>
+    </div>
+
+    <script>
+        function showPage(page, clicked, sidebarId) {
+            // Load page into iframe
+            document.getElementById('mainframe').src = page;
+
+            // Update navbar active state
+            document.querySelectorAll('#nav a').forEach(a => a.classList.remove('active'));
+
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+
+            // Set active on clicked link
+            if (clicked) clicked.classList.add('active');
+
+            // Sync navbar and sidebar together
+            const map = {
+                'home.html':     { nav: 0, sb: 'sb-home' },
+                'products.html': { nav: 1, sb: 'sb-products' },
+                'about.html':    { nav: 2, sb: 'sb-about' }
+            };
+            if (map[page]) {
+                document.querySelectorAll('#nav a')[map[page].nav].classList.add('active');
+                document.getElementById(map[page].sb).classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>

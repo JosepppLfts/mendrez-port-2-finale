@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+  <rect width="400" height="220" fill="#fff5e0"/>
+  <circle cx="360" cy="30" r="60" fill="#f0a030" opacity="0.2"/>
+  <g transform="translate(200,115) rotate(-12)">
+    <ellipse cx="-26" cy="-28" rx="19" ry="46" fill="#f0a030" transform="rotate(-16,-26,-28)"/>
+    <ellipse cx="4"   cy="-36" rx="19" ry="50" fill="#ffd080" transform="rotate(-2,4,-36)"/>
+    <ellipse cx="36"  cy="-30" rx="19" ry="46" fill="#f0a030" transform="rotate(14,36,-30)"/>
+    <ellipse cx="-16" cy="8"   rx="18" ry="44" fill="#ffd080" transform="rotate(-20,-16,8)"/>
+    <ellipse cx="17"  cy="2"   rx="18" ry="48" fill="#f0a030" transform="rotate(-5,17,2)"/>
+    <rect x="-7" y="-78" width="14" height="17" rx="4" fill="#8B5010"/>
+  </g>
+  <rect x="126" y="188" width="148" height="26" rx="13" fill="#7a3a00" opacity="0.85"/>
+  <text x="200" y="206" font-family="Georgia,serif" font-size="13" fill="#fff5e0" text-anchor="middle" font-weight="bold">Saba Banana</text>
+</svg>

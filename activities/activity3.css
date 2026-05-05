@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f0f7ff;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-container {
+    max-width: 1000px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.flag-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #d1e9ff;
+    text-align: center;
+}
+
+.flag-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
+}
+
+.flag-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid skyblue;
+}
+
+.country-name {
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0056b3;
+    background: #ffffff;
+}
