@@ -4,275 +4,762 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joseph Virgil T Mendrez | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        :root{
+            --bg:#050505;
+            --surface:#0a0a0a;
+            --surface2:#0f0f0f;
+            --red:#e00000;
+            --red-bright:#ff1a1a;
+            --red-dim:rgba(220,0,0,0.18);
+            --red-glow:rgba(255,26,26,0.35);
+            --text:#f0f0f0;
+            --text-dim:#8a8a8a;
+            --border:#1c1c1c;
+            --border-red:rgba(200,0,0,0.4);
+        }
+
+        html{scroll-behavior:smooth;}
+
+        body{
+            font-family:'Rajdhani',sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            line-height:1.6;
+            overflow-x:hidden;
+        }
+
+        /* scanline overlay */
+        body::before{
+            content:'';
+            position:fixed;
+            inset:0;
+            background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+            pointer-events:none;
+            z-index:9999;
+        }
+
+        /* corner cut mixin via clip-path */
+        .cyber-cut{
+            clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));
+        }
+
+        /* NAVBAR */
+        .navbar{
+            position:fixed;top:0;width:100%;
+            background:rgba(5,5,5,0.96);
+            backdrop-filter:blur(14px);
+            border-bottom:1px solid var(--border-red);
+            z-index:1000;padding:1.1rem 2rem;
+        }
+
+        .nav-container{
+            max-width:1200px;margin:auto;
+            display:flex;justify-content:space-between;align-items:center;
+        }
+
+        .logo{
+            font-family:'Orbitron',monospace;
+            font-size:0.9rem;font-weight:700;
+            color:var(--red-bright);
+            letter-spacing:2px;
+            text-shadow:0 0 10px var(--red-glow);
+        }
+
+        .logo span{color:var(--text);font-weight:400;}
+
+        .nav-links{list-style:none;display:flex;gap:2rem;}
+
+        .nav-links a{
+            text-decoration:none;
+            color:var(--text-dim);
+            font-size:0.85rem;font-weight:600;
+            letter-spacing:2px;text-transform:uppercase;
+            font-family:'Share Tech Mono',monospace;
+            transition:.3s;position:relative;
+        }
+
+        .nav-links a::before{
+            content:'//';
+            color:var(--red);
+            margin-right:5px;
+            opacity:0;transition:.3s;
+        }
+
+        .nav-links a:hover{color:var(--red-bright);}
+        .nav-links a:hover::before{opacity:1;}
+
+        /* HERO */
+        .hero{
+            min-height:100vh;max-width:1200px;margin:auto;
+            display:flex;justify-content:space-between;align-items:center;
+            padding:120px 2rem 60px;gap:40px;
+        }
+
+        .sub-headline{
+            font-family:'Share Tech Mono',monospace;
+            color:var(--red);letter-spacing:4px;
+            text-transform:uppercase;margin-bottom:1rem;
+            font-size:0.85rem;
+        }
+
+        .main-headline{
+            font-family:'Orbitron',monospace;
+            font-size:3.2rem;line-height:1.1;
+            font-weight:900;margin-bottom:1.5rem;
+        }
+
+        .glow-text{
+            color:var(--red-bright);
+            text-shadow:0 0 18px var(--red-glow),0 0 40px rgba(220,0,0,0.2);
+        }
+
+        .hero-content p{
+            color:var(--text-dim);font-size:1.05rem;
+            max-width:480px;margin-bottom:2rem;
+            font-family:'Share Tech Mono',monospace;
+            font-size:0.9rem;line-height:1.8;
+        }
+
+        .btn-primary{
+            display:inline-block;text-decoration:none;
+            background:transparent;
+            color:var(--red-bright);
+            border:1px solid var(--red);
+            padding:0.9rem 2.5rem;
+            font-family:'Orbitron',monospace;
+            font-size:0.8rem;font-weight:700;
+            letter-spacing:3px;text-transform:uppercase;
+            clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+            transition:.3s;position:relative;
+        }
+
+        .btn-primary::before{
+            content:'';position:absolute;inset:0;
+            background:var(--red-dim);
+            clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+            opacity:0;transition:.3s;
+        }
+
+        .btn-primary:hover{
+            box-shadow:0 0 25px var(--red-glow);
+            text-shadow:0 0 8px var(--red-glow);
+        }
+
+        .btn-primary:hover::before{opacity:1;}
+
+        /* hero image */
+        .image-wrapper{
+            position:relative;
+            width:300px;height:300px;flex-shrink:0;
+        }
+
+        .image-wrapper::before,
+        .image-wrapper::after{
+            content:'';position:absolute;
+            border:1px solid var(--red);
+            border-radius:50%;animation:spin 8s linear infinite;
+        }
+
+        .image-wrapper::before{
+            inset:-12px;
+            border-color:var(--red) transparent transparent transparent;
+            box-shadow:0 0 15px var(--red-glow);
+        }
+
+        .image-wrapper::after{
+            inset:-24px;
+            border-color:transparent var(--red) transparent transparent;
+            animation-direction:reverse;
+            animation-duration:12s;
+            opacity:.5;
+        }
+
+        @keyframes spin{to{transform:rotate(360deg);}}
+
+        .image-inner{
+            width:100%;height:100%;border-radius:50%;
+            border:2px solid var(--border-red);
+            overflow:hidden;
+            position:relative;z-index:1;
+        }
+
+        .image-inner img{
+            width:100%;height:100%;object-fit:cover;
+            filter:grayscale(20%) contrast(1.1);
+        }
+
+        /* SECTION LABELS */
+        .section-label-top{
+            font-family:'Share Tech Mono',monospace;
+            font-size:0.75rem;letter-spacing:4px;
+            color:var(--red);text-transform:uppercase;
+            margin-bottom:0.5rem;
+        }
+
+        .section-title{
+            font-family:'Orbitron',monospace;
+            font-size:2rem;margin-bottom:25px;
+            font-weight:700;
+        }
+
+        .section-title-center{
+            font-family:'Orbitron',monospace;
+            font-size:1.8rem;text-align:center;
+            margin-bottom:55px;font-weight:700;
+        }
+
+        .title-bar{
+            display:inline-block;width:40px;height:2px;
+            background:var(--red);margin-right:12px;vertical-align:middle;
+        }
+
+        /* ABOUT */
+        .about-section{
+            padding:100px 2rem;
+            background:linear-gradient(to bottom,var(--bg),#08020202);
+            border-top:1px solid var(--border-red);
+        }
+
+        .about-container{
+            max-width:1100px;margin:auto;
+            display:grid;grid-template-columns:1.5fr 1fr;
+            gap:60px;align-items:center;
+        }
+
+        .about-text p{
+            color:var(--text-dim);margin-bottom:20px;
+            font-size:1.05rem;line-height:1.9;
+        }
+
+        .about-text strong{color:var(--red-bright);}
+
+        .about-stats{display:grid;gap:20px;}
+
+        .stat-card{
+            background:var(--surface2);
+            border:1px solid var(--border-red);
+            padding:28px;border-radius:0;
+            clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+            text-align:center;transition:.3s;
+        }
+
+        .stat-card:hover{
+            border-color:var(--red-bright);
+            box-shadow:0 0 20px var(--red-glow),inset 0 0 20px rgba(220,0,0,0.05);
+        }
+
+        .stat-value{
+            display:block;
+            font-family:'Orbitron',monospace;
+            font-size:2.2rem;font-weight:900;
+            color:var(--red-bright);
+            text-shadow:0 0 10px var(--red-glow);
+        }
+
+        .stat-label{
+            color:var(--text-dim);font-size:0.7rem;
+            font-family:'Share Tech Mono',monospace;
+            text-transform:uppercase;letter-spacing:2px;
+        }
+
+        /* SKILLS */
+        .skills-section{
+            padding:100px 2rem;max-width:1000px;margin:auto;
+            border-top:1px solid var(--border-red);
+        }
+
+        .skills-category{margin-bottom:60px;text-align:center;}
+
+        .skills-category h3{
+            color:var(--red);margin-bottom:30px;
+            letter-spacing:4px;text-transform:uppercase;
+            font-family:'Share Tech Mono',monospace;font-size:0.85rem;
+        }
+
+        .skills-grid{
+            display:flex;justify-content:center;flex-wrap:wrap;gap:20px;
+        }
+
+        .skill-card{
+            width:140px;
+            background:var(--surface2);
+            border:1px solid var(--border);
+            border-radius:0;
+            clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);
+            padding:1.8rem 1rem;text-align:center;transition:.4s;
+        }
+
+        .skill-card:hover{
+            border-color:var(--red);
+            box-shadow:0 0 18px var(--red-glow),inset 0 0 15px rgba(220,0,0,0.05);
+            transform:translateY(-6px);
+        }
+
+        .skill-card i{
+            font-size:2.5rem;color:var(--red);
+            margin-bottom:12px;display:block;
+            text-shadow:0 0 8px var(--red-glow);
+        }
+
+        .skill-card span{
+            color:var(--text-dim);font-size:0.85rem;
+            font-family:'Share Tech Mono',monospace;
+        }
+
+        /* EDUCATION */
+        .education-section{
+            padding:90px 2rem;max-width:1200px;margin:auto;
+            border-top:1px solid var(--border-red);
+        }
+
+        .education-grid{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;
+        }
+
+        .edu-card{
+            background:var(--surface2);
+            border:1px solid var(--border);
+            border-left:3px solid var(--red);
+            padding:2rem;transition:.3s;
+        }
+
+        .edu-card:hover{
+            border-color:var(--red);
+            border-left-color:var(--red-bright);
+            box-shadow:0 0 18px var(--red-glow);
+            transform:translateY(-4px);
+        }
+
+        .edu-year{
+            display:block;
+            font-family:'Share Tech Mono',monospace;
+            color:var(--red);font-weight:700;
+            margin-bottom:10px;font-size:0.85rem;
+        }
+
+        .school-name{font-weight:700;margin-bottom:8px;font-size:1.05rem;}
+
+        .edu-details{color:var(--text-dim);font-size:0.92rem;}
+
+        /* PORTFOLIO */
+        .portfolio-section{
+            padding:90px 2rem;max-width:1200px;margin:auto;
+            border-top:1px solid var(--border-red);
+        }
+
+        .portfolio-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+        }
+
+        .portfolio-card{
+            background:var(--surface2);
+            border:1px solid var(--border);
+            border-top:2px solid var(--red);
+            padding:20px 16px;min-height:110px;
+            display:flex;flex-direction:column;
+            justify-content:space-between;transition:.3s;
+            position:relative;overflow:hidden;
+        }
+
+        .portfolio-card::before{
+            content:'';position:absolute;
+            top:0;left:0;width:100%;height:1px;
+            background:linear-gradient(90deg,transparent,var(--red),transparent);
+            opacity:0;transition:.3s;
+        }
+
+        .portfolio-card:hover{
+            border-color:var(--red);
+            box-shadow:0 0 18px rgba(220,0,0,0.15);
+            transform:translateY(-4px);
+        }
+
+        .portfolio-card:hover::before{opacity:1;}
+
+        .portfolio-card h3{
+            font-size:0.95rem;color:white;
+            font-family:'Orbitron',monospace;
+            font-weight:700;margin-bottom:12px;
+            letter-spacing:1px;
+        }
+
+        .portfolio-card p{display:none;}
+
+        .view-btn{
+            display:inline-block;width:100%;
+            padding:8px 0;border-radius:0;
+            background:transparent;
+            border:1px solid var(--red);
+            color:var(--red-bright);
+            text-decoration:none;
+            font-family:'Share Tech Mono',monospace;
+            font-size:0.8rem;font-weight:700;
+            text-align:center;letter-spacing:2px;
+            transition:.3s;
+        }
+
+        .view-btn:hover{
+            background:var(--red-dim);
+            box-shadow:0 0 10px var(--red-glow);
+        }
+
+        /* CONTACT */
+        .contact-section{
+            padding:90px 2rem;
+            border-top:1px solid var(--border-red);
+        }
+
+        .contact-container{
+            max-width:1100px;margin:auto;
+            display:grid;grid-template-columns:1fr 1.4fr;gap:60px;
+        }
+
+        .contact-label{
+            font-family:'Share Tech Mono',monospace;
+            font-size:0.75rem;letter-spacing:4px;
+            color:var(--red);text-transform:uppercase;margin-bottom:16px;
+        }
+
+        .contact-description{
+            color:var(--text-dim);font-size:0.95rem;margin-bottom:25px;
+        }
+
+        .contact-divider{border:none;border-top:1px solid var(--border-red);margin:12px 0;}
+
+        .contact-info-item{display:flex;flex-direction:column;padding:10px 0;}
+
+        .info-label{
+            font-family:'Share Tech Mono',monospace;
+            font-size:0.65rem;letter-spacing:3px;
+            color:var(--red);text-transform:uppercase;margin-bottom:4px;
+        }
+
+        .info-value{font-size:1rem;color:var(--text);}
+
+        .map-wrapper{
+            border:1px solid var(--border-red);margin-bottom:20px;
+            filter:grayscale(1) invert(0.9) hue-rotate(130deg);
+        }
+
+        .message-box{
+            background:var(--surface2);
+            border:1px solid var(--border-red);
+            padding:28px;margin:0 0 20px;
+        }
+
+        .message-box h3{
+            font-family:'Orbitron',monospace;
+            font-size:1.2rem;font-weight:700;
+            color:var(--text);margin-bottom:22px;
+        }
+
+        .contact-form input,
+        .contact-form textarea{
+            width:100%;
+            background:#111;
+            border:1px solid var(--border);
+            border-left:2px solid var(--red);
+            color:white;padding:13px 15px;
+            margin-bottom:1rem;
+            font-family:'Share Tech Mono',monospace;
+            font-size:0.85rem;outline:none;transition:.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus{
+            border-color:var(--red);
+            box-shadow:0 0 10px var(--red-glow);
+        }
+
+        .send-btn{
+            background:var(--red);color:white;
+            font-family:'Orbitron',monospace;
+            font-weight:700;letter-spacing:3px;
+            padding:14px 30px;border:none;
+            cursor:pointer;transition:.3s;
+            font-size:0.75rem;width:100%;
+        }
+
+        .send-btn:hover{
+            background:var(--red-bright);
+            box-shadow:0 0 20px var(--red-glow);
+        }
+
+        .social-links{display:flex;gap:14px;margin-top:16px;}
+
+        .social-icon{
+            display:flex;align-items:center;justify-content:center;
+            width:42px;height:42px;
+            border:1px solid var(--border-red);
+            color:var(--red);font-size:1rem;
+            text-decoration:none;transition:.3s;
+        }
+
+        .social-icon:hover{
+            border-color:var(--red-bright);color:var(--red-bright);
+            box-shadow:0 0 12px var(--red-glow);
+            transform:translateY(-3px);
+        }
+
+        /* FOOTER */
+        footer{
+            text-align:center;padding:30px 2rem;
+            border-top:1px solid var(--border-red);
+            color:var(--text-dim);
+            font-family:'Share Tech Mono',monospace;font-size:0.8rem;
+        }
+
+        footer span{color:var(--red);}
+
+        /* DECORATIVE HEX GRID BG */
+        .hero{position:relative;}
+        .hero::before{
+            content:'';position:absolute;
+            inset:0;
+            background-image:radial-gradient(circle at 80% 50%, rgba(180,0,0,0.06) 0%, transparent 60%);
+            pointer-events:none;
+        }
+
+        /* glitch animation on logo */
+        @keyframes glitch{
+            0%,100%{text-shadow:0 0 10px var(--red-glow);}
+            25%{text-shadow:-2px 0 8px #ff0000,2px 0 8px #ff0000;}
+            50%{text-shadow:2px 0 12px #ff4444,-2px 0 12px #ff4444;}
+            75%{text-shadow:0 0 10px var(--red-glow);}
+        }
+
+        .logo{animation:glitch 4s infinite;}
+
+        /* RESPONSIVE */
+        @media(max-width:900px){
+            .hero{flex-direction:column-reverse;text-align:center;padding:140px 2rem 60px;}
+            .about-container,.contact-container{grid-template-columns:1fr;}
+            .about-stats{grid-template-columns:1fr 1fr;}
+            .main-headline{font-size:2.2rem;}
+            .image-wrapper{width:240px;height:240px;margin-bottom:2rem;}
+            .nav-links{display:none;}
+            .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+        }
+
+        @media(max-width:500px){
+            .portfolio-grid{grid-template-columns:1fr;}
+            .about-stats{grid-template-columns:1fr;}
+        }
+    </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Joseph Virgil T Mendrez</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">JV<span>Mendrez</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- HERO -->
-    <header class="hero" id="home">
-        <div class="hero-content">
-            <h2 class="sub-headline">BSIT Student at CIT-U</h2>
-            <h1 class="main-headline">Building the <span class="glow-text">Future</span> through Code.</h1>
-            <p>Specializing in Full-Stack Development and Digital Logic Design.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn-primary">Work With Me</a>
+<!-- HERO -->
+<header class="hero" id="home">
+    <div class="hero-content">
+        <p class="sub-headline">// BSIT Student — CIT-U</p>
+        <h1 class="main-headline">Forging the <span class="glow-text">Digital</span><br>Frontier.</h1>
+        <p>Driven by logic. Fueled by curiosity. Crafting systems that solve real-world problems through Full-Stack Engineering and Digital Design.</p>
+        <a href="#contact" class="btn-primary">Initialize Contact</a>
+    </div>
+
+    <div class="hero-image">
+        <div class="image-wrapper">
+            <div class="image-inner">
+                <img src="j.jpg" alt="Joseph Vi                                                                     rgil T Mendrez">
             </div>
         </div>
+    </div>
+</header>
 
-        <div class="hero-image">
-            <div class="image-border">
-                <img src="images/j.jpg" alt="Joseph Virgil T Mendrez Profile Picture">
-            </div>
-        </div>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about" class="about-section">
-        <div class="about-container">
-            <div class="about-text">
-                <h2 class="section-title">About Me</h2>
-                <p>
-                    Hello! I'm <strong>Joseph Virgil T Mendrez</strong>, I'm 18 years old, a dedicated 1st-year IT student at 
-                    <strong>Cebu Institute of Technology - University</strong>. My passion for technology 
-                    stems from curiosity about how complex systems are simplified through logical design.
-                </p>
-                <p>
-                    Building on my STEM foundation from Senior High School, I am currently sharpening my 
-                    expertise in <strong>C Programming</strong> and <strong>Web Development</strong>. 
-                    I enjoy transforming abstract concepts into functional, user-centered applications.
-                </p>
-            </div>
-
-            <div class="about-stats">
-                <div class="stat-card">
-                    <span class="stat-value">13+</span>
-                    <span class="stat-label">Activities Done</span>
-                </div>
-
-                <div class="stat-card">
-                    <span class="stat-value">BSIT-1</span>
-                    <span class="stat-label">Level</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="skills-section">
-        <h2 class="section-title-center">Technical Proficiency</h2>
-
-        <div class="skills-category">
-            <h3>Backend Development</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fas fa-code"></i><span>C Language</span></div>
-                <div class="skill-card"><i class="fab fa-java"></i><span>Java</span></div>
-            </div>
+<!-- ABOUT -->
+<section id="about" class="about-section">
+    <div class="about-container">
+        <div class="about-text">
+            <p class="section-label-top">// sys.whoami</p>
+            <h2 class="section-title"><span class="title-bar"></span>About Me</h2>
+            <p>
+                I'm <strong>Joseph Virgil T Mendrez</strong> — 18 years old, a first-year BSIT student at 
+                <strong>Cebu Institute of Technology - University</strong>. 
+                I'm the kind of person who needs to know <em>why</em> something works before I'm satisfied — 
+                and that relentless curiosity is what pushed me into tech.
+            </p>
+            <p>
+                Rooted in a <strong>STEM background</strong> from senior high school, I'm now sharpening my edge in 
+                <strong>C Programming</strong>, <strong>Web Development</strong>, and <strong>Digital Logic</strong>. 
+                I don't just write code — I engineer solutions that are clean, functional, and built to scale.
+            </p>
         </div>
 
-        <div class="skills-category">
-            <h3>Frontend Development</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fab fa-html5"></i><span>HTML5</span></div>
-                <div class="skill-card"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-                <div class="skill-card"><i class="fab fa-js"></i><span>JavaScript</span></div>
+        <div class="about-stats">
+            <div class="stat-card">
+                <span class="stat-value">13+</span>
+                <span class="stat-label">Activities Deployed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">BSIT-1</span>
+                <span class="stat-label">Current Level</span>
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="skills-category">
-            <h3>Tools & Others</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fas fa-file-powerpoint"></i><span>PowerPoint</span></div>
-                <div class="skill-card"><i class="fas fa-file-excel"></i><span>Excel</span></div>
-                <div class="skill-card"><i class="fab fa-github"></i><span>GitHub</span></div>
-            </div>
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+    <p class="section-label-top" style="text-align:center;">// system.skills_matrix</p>
+    <h2 class="section-title-center">Technical Arsenal</h2>
+
+    <div class="skills-category">
+        <h3>// Backend Core</h3>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fas fa-code"></i><span>C Language</span></div>
         </div>
-    </section>
+    </div>
 
-    <!-- EDUCATION -->
-    <section id="education" class="education-section">
-        <h2 class="section-title-center">EDUCATIONAL BACKGROUND</h2>
-        <div class="education-grid">
-
-            <div class="edu-card">
-                <span class="edu-year">2025 - Present</span>
-                <p class="school-name">Cebu Institute of Technology - University</p>
-                <p class="edu-details">BS in Information Technology (BSIT-1). Mastering C and Web Fundamentals.</p>
-            </div>
-
-            <div class="edu-card">
-                <span class="edu-year">2023 - 2025</span>
-                <p class="school-name">De La Salle Andres Soriano Memorial College</p>
-                <p class="edu-details">STEM - Science, Technology, Engineering and Mathematics</p>
-            </div>
-
-            <div class="edu-card">
-                <span class="edu-year">2019 - 2023</span>
-                <p class="school-name">Consolatrix College of Toledo City, Inc.</p>
-                <p class="edu-details">Foundations in Mathematics and Technical Drafting.</p>
-            </div>
-
+    <div class="skills-category">
+        <h3>// Frontend Interface</h3>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fab fa-html5"></i><span>HTML5</span></div>
+            <div class="skill-card"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+            <div class="skill-card"><i class="fab fa-js"></i><span>JavaScript</span></div>
         </div>
-    </section>
+    </div>
 
-       <!-- PORTFOLIO -->
-    <section id="portfolio" class="portfolio-section">
-        <h2 class="section-title-center">My Activities Portfolio</h2>
-
-        <div class="portfolio-grid">
-
-            <div class="portfolio-card">
-                <h3>Activity 1</h3>
-                <p>C Programming Project</p>
-                <a href="activities/activity1.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 2</h3>
-                <p>Web Development</p>
-                <a href="activities/activity2.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 3</h3>
-                <p>Logic Design</p>
-                <a href="activities/activity3.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 4</h3>
-                <p>UI Design</p>
-                <a href="activities/activity4.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 5</h3>
-                <p>C Application</p>
-                <a href="activities/activity5.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 6</h3>
-                <p>Static Website</p>
-                <a href="activities/home.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 7</h3>
-                <p>Binary Adder</p>
-                <a href="activities/activity7.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 8</h3>
-                <p>Portfolio Version 1</p>
-                <a href="activities/activity8.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 9</h3>
-                <p>JavaScript Tool</p>
-                <a href="activities/activity9.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 10</h3>
-                <p>Database Concept</p>
-                <a href="activities/activity10.html" target="_blank" class="view-btn">View</a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3>Activity 11</h3>
-                <p>Responsive Design</p>
-                <a href="activities/activityfor11.html" target="_blank" class="view-btn">View</a>
-            </div>
-
+    <div class="skills-category">
+        <h3>// Tools & Utilities</h3>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fas fa-file-powerpoint"></i><span>PowerPoint</span></div>
+            <div class="skill-card"><i class="fas fa-file-excel"></i><span>Excel</span></div>
+            <div class="skill-card"><i class="fab fa-github"></i><span>GitHub</span></div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="education-section">
+    <p class="section-label-top" style="text-align:center;">// education.log</p>
+    <h2 class="section-title-center">Academic Timeline</h2>
+    <div class="education-grid">
+
+        <div class="edu-card">
+            <span class="edu-year">&gt; 2025 — PRESENT</span>
+            <p class="school-name">Cebu Institute of Technology — University</p>
+            <p class="edu-details">BS in Information Technology (BSIT-1). Actively mastering C Programming and Web Fundamentals.</p>
+        </div>
+
+        <div class="edu-card">
+            <span class="edu-year">&gt; 2023 — 2025</span>
+            <p class="school-name">De La Salle Andres Soriano Memorial College</p>
+            <p class="edu-details">STEM Strand — Science, Technology, Engineering and Mathematics.</p>
+        </div>
+
+        <div class="edu-card">
+            <span class="edu-year">&gt; 2019 — 2023</span>
+            <p class="school-name">Consolatrix College of Toledo City, Inc.</p>
+            <p class="edu-details">Built foundations in Mathematics and Technical Drafting.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="portfolio-section">
+    <p class="section-label-top" style="text-align:center;">// portfolio.list()</p>
+    <h2 class="section-title-center">Activity Archive</h2>
+
+    <div class="portfolio-grid">
+        <div class="portfolio-card"><h3>ACT_01</h3><p>C Programming</p><a href="activities/activity1.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_02</h3><p>Web Dev</p><a href="activities/activity2.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_03</h3><p>Logic Design</p><a href="activities/activity3.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_04</h3><p>UI Design</p><a href="activities/activity4.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_05</h3><p>C Application</p><a href="activities/activity5.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_06</h3><p>Static Website</p><a href="activities/home.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_07</h3><p>Binary Adder</p><a href="activities/activity7.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_08</h3><p>Portfolio v1</p><a href="activities/activity8.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_09</h3><p>JavaScript Tool</p><a href="activities/activity9.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_10</h3><p>Database Concept</p><a href="activities/activity10.html" target="_blank" class="view-btn">LAUNCH</a></div>
+        <div class="portfolio-card"><h3>ACT_11</h3><p>Responsive Design</p><a href="activities/activityfor11.html" target="_blank" class="view-btn">LAUNCH</a></div>
+    </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
     <div class="contact-container">
 
         <div class="contact-left">
-            <p class="section-label">GET IN TOUCH</p>
-            <p class="contact-description">Feel free to send me anything you want to say.</p>
+            <p class="contact-label">// establish.connection</p>
+            <p class="contact-description">Transmit your message. I'll respond as fast as possible.</p>
 
             <hr class="contact-divider">
-
             <div class="contact-info-item">
                 <span class="info-label">EMAIL</span>
                 <span class="info-value">josephmendrez92@gmail.com</span>
             </div>
-
             <hr class="contact-divider">
-
             <div class="contact-info-item">
                 <span class="info-label">PHONE</span>
                 <span class="info-value">09551269828</span>
             </div>
-
             <hr class="contact-divider">
-
             <div class="contact-info-item">
                 <span class="info-label">LOCATION</span>
                 <span class="info-value">Cebu City, Philippines</span>
             </div>
-
             <hr class="contact-divider">
-
             <div class="contact-info-item">
-                <span class="info-label">AVAILABILITY</span>
-                <span class="info-value">Open to opportunities</span>
+                <span class="info-label">STATUS</span>
+                <span class="info-value" style="color:var(--red-bright);">&#9632; Open to Opportunities</span>
             </div>
         </div>
 
         <div class="contact-right">
             <div class="map-wrapper">
-                <iframe 
+                <iframe
                     src="https://www.google.com/maps?q=10.35027,123.6674&hl=en&z=15&output=embed"
-                    width="100%" 
-                    height="250" 
-                    style="border:0;"
+                    width="100%" height="220"
+                    style="border:0;display:block;"
                     loading="lazy">
                 </iframe>
             </div>
- <div class="message-box">
-        <h3>Send me a message!</h3>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit" class="send-btn">SEND MESSAGE</button>
-        </form>
-    </div>
 
-    <div class="social-links">
-        <a href="https://facebook.com" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://instagram.com" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+            <div class="message-box">
+                <h3>// send_message()</h3>
+                <form class="contact-form">
+                    <input type="text" placeholder="your_name" required>
+                    <input type="email" placeholder="your_email@domain.com" required>
+                    <textarea placeholder="your_message..." rows="5" required></textarea>
+                    <button type="submit" class="send-btn">TRANSMIT &gt;&gt;</button>
+                </form>
+            </div>
+
+            <div class="social-links">
+                <a href="https://facebook.com" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
     </div>
-</div>
 </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 | Joseph Virgil T Mendrez. Built for CIT-U.</p>
-    </footer>
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 — <span>Joseph Virgil T Mendrez</span> // Built for CIT-U</p>
+</footer>
 
 </body>
 </html>
