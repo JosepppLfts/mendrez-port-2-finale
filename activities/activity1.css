@@ -9,22 +9,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: #6b0000;
     font-family: 'Tahoma', 'Segoe UI', sans-serif;
 }
 
 .profile-card {
-    background: #ffffff;
+    background: #1a0000;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.2);
     max-width: 450px;
     text-align: center;
-    border-left: 10px solid skyblue;
+    border-left: 10px solid #ff3333;
 }
 
 h2 {
-    color: #333;
+    color: #ff6666;
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -34,32 +34,33 @@ h2 {
 .name {
     font-size: 25px;
     font-weight: bold;
-    color: skyblue;
+    color: #ff3333;
     text-decoration: underline;
     margin-bottom: 15px;
 }
 
 .info {
-    color: #555;
+    color: #ffcccc;
     line-height: 1.8;
     font-size: 1.1rem;
 }
 
 .info b {
-    color: #222;
+    color: #ffffff;
 }
 
 .hobby-list {
     margin-top: 15px;
     padding: 10px;
-    background: #f0faff;
+    background: #2a0000;
     border-radius: 8px;
     font-style: italic;
-    color: #0077b6;
+    color: #ff9999;
 }
 
 .highlight {
     font-weight: bolder;
-    color: skyblue;
+    color: #ff3333;
     font-size: 1.3rem;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
 }
